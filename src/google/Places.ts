@@ -96,7 +96,7 @@ export class GooglePlaces {
    * Google API Find Place Search
    */
   public findPlaceSearch = async (opts?: GooglePlacesFindPlaceSearchOpts): Promise<GooglePlaceFindPlaceSearchResponse> => {
-    const config = API.TEXT_SEARCH(opts);
+    const config = API.FIND_PLACE_SEARCH(opts);
     const params = this._permitParams(config, opts);
     const res = await this._query<GoogleResponse<GooglePlaceFindPlaceSearchResponse>>(config.path, params);
     return res.body;

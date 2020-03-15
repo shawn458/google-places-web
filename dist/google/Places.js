@@ -48,7 +48,7 @@ class GooglePlaces {
             return res.body;
         });
         this.findPlaceSearch = (opts) => __awaiter(this, void 0, void 0, function* () {
-            const config = Constants_1.API.TEXT_SEARCH(opts);
+            const config = Constants_1.API.FIND_PLACE_SEARCH(opts);
             const params = this._permitParams(config, opts);
             const res = yield this._query(config.path, params);
             return res.body;
