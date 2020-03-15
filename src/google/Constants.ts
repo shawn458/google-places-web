@@ -97,5 +97,12 @@ export const API: ApiMap = {
     ],
     path: "textsearch",
     requiredKeys: ["query"]
+  }),
+  FIND_PLACE_SEARCH: () => ({
+    optionalKeys: [
+      "language"
+    ],
+    path: "findplacefromtext",
+    requiredKeys: ["input", "inputtype", "fields"]
   })
 };

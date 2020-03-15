@@ -11,6 +11,8 @@ import {
   GooglePlaceNearbySearchResponse,
   GooglePlaceTextSearchResponse,
   GooglePlacesTextSearchOpts,
+  GooglePlacesFindPlaceSearchOpts,
+  GooglePlaceFindPlaceSearchResponse,
   GooglePlaceBaseResponse,
   GooglePlacesOptions
 } from "./types";
@@ -87,6 +89,16 @@ export class GooglePlaces {
     const config = API.TEXT_SEARCH(opts);
     const params = this._permitParams(config, opts);
     const res = await this._query<GoogleResponse<GooglePlaceTextSearchResponse>>(config.path, params);
+    return res.body;
+  }
+
+  /**
+   * Google API Find Place Search
+   */
+  public findPlaceSearch = async (opts?: GooglePlacesFindPlaceSearchOpts): Promise<GooglePlaceFindPlaceSearchResponse> => {
+    const config = API.TEXT_SEARCH(opts);
+    const params = this._permitParams(config, opts);
+    const res = await this._query<GoogleResponse<GooglePlaceFindPlaceSearchResponse>>(config.path, params);
     return res.body;
   }
 

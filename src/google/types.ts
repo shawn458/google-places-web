@@ -96,6 +96,17 @@ export interface GooglePlacesTextSearchOpts extends GooglePlacesOptions {
   type?: string;
 }
 
+/**
+ * Internal use for findplacesearch()
+ * https://developers.google.com/maps/documentation/javascript/reference/places-service#FindPlaceFromQueryRequest
+ */
+export interface GooglePlacesFindPlaceSearchOpts extends GooglePlacesOptions {
+  input: string;
+  inputtype: 'textquery' | 'phonenumber';
+  language?: string;
+  fields?: string;
+}
+
 interface BaseGoogleResult {
   [key: string]: any;
 }
@@ -268,6 +279,13 @@ export interface GooglePlaceTextSearchResponse extends GooglePlaceBaseResponse {
 }
 
 
+export type GooglePlaceFindPlaceSearchResult = Pick<GooglePlaceDetailsResult, 'formatted_address' | 'name' | 'opening_hours' | 'photos' | 'rating' | 'user_ratings_total' | 'place_id' | 'icon' | 'geometry'>
+/**
+ * HTTP body payload for a Find Place search request
+ */
+export interface GooglePlaceFindPlaceSearchResponse extends GooglePlaceBaseResponse {
+  candidates: GooglePlaceFindPlaceSearchResult[];
+}
 
 /**
  * HTTP body payload for a Place Query Autocomplete request
